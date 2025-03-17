@@ -62,6 +62,34 @@ const themes: GameTheme[] = [
       { id: "6", src: "/images/wow/anduin.jpeg", alt: "Anduin" },
     ],
   },
+  {
+    id: "strangerthings",
+    name: "Stranger Things",
+    description: "Test your memory with characters from Stranger Things",
+    thumbnailSrc: "/images/strangerthings/strangerthings.jpeg",
+    cards: [
+      { id: "1", src: "/images/strangerthings/dustin.jpeg", alt: "Dustin" },
+      { id: "2", src: "/images/strangerthings/eleven.jpeg", alt: "Eleven" },
+      { id: "3", src: "/images/strangerthings/mike.jpeg", alt: "Mike" },
+      { id: "4", src: "/images/strangerthings/lucas.jpeg", alt: "Lucas" },
+      { id: "5", src: "/images/strangerthings/vecna.jpeg", alt: "Vecna" },
+      { id: "6", src: "/images/strangerthings/nancy.jpeg", alt: "Nancy" },
+    ],
+  },
+  {
+    id: "peakyblinders",
+    name: "Peaky Blinders",
+    description: "Test your memory with characters from Peaky Blinders",
+    thumbnailSrc: "/images/peakyblinders/peakyblinders.jpeg",
+    cards: [
+      { id: "1", src: "/images/peakyblinders/tommy.jpeg", alt: "Tommy" },
+      { id: "2", src: "/images/peakyblinders/arthur.jpeg", alt: "Arthur" },
+      { id: "3", src: "/images/peakyblinders/john.jpeg", alt: "John" },
+      { id: "4", src: "/images/peakyblinders/polly.jpeg", alt: "Polly" },
+      { id: "5", src: "/images/peakyblinders/michael.jpeg", alt: "Michael" },
+      { id: "6", src: "/images/peakyblinders/alfie.jpeg", alt: "Alfie" },
+    ],
+  },
 ];
 
 export default themes;

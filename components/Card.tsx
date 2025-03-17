@@ -19,7 +19,7 @@ export default function Card({
 }: CardProps) {
   return (
     <div
-      className={`cursor-pointer aspect-square w-full max-w-[180px] mx-auto rounded-md flex items-center justify-center
+      className={`cursor-pointer aspect-square w-full max-w-[80px] sm:max-w-[120px] md:max-w-[150px] lg:max-w-[180px] mx-auto rounded-md flex items-center justify-center
                  ${flipped || matched ? "bg-gray-800" : "bg-gray-900"} 
                  ${matched ? "border-2 border-green-500" : ""}`}
       onClick={onClick}
@@ -31,12 +31,12 @@ export default function Card({
             src={src}
             alt={alt}
             fill
-            sizes="(max-width: 640px) 150px, (max-width: 1024px) 180px, 180px"
+            sizes="(max-width: 640px) 80px, (max-width: 768px) 120px, (max-width: 1024px) 150px, 180px"
             className="object-cover"
           />
         </div>
       ) : (
-        <span className="text-3xl text-white">?</span>
+        <span className="text-xl sm:text-2xl md:text-3xl text-white">?</span>
       )}
     </div>
   );

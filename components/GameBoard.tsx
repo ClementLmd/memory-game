@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Card from "./Card";
 import { CardType, GameTheme } from "../types";
 
@@ -27,6 +27,9 @@ export default function GameBoard({ theme, onChangeTheme }: GameBoardProps) {
   const [flippedCards, setFlippedCards] = useState<string[]>([]);
   const [moves, setMoves] = useState(0);
   const [gameComplete, setGameComplete] = useState(false);
+
+  // Create a ref for the game complete notification
+  const gameCompleteRef = useRef<HTMLDivElement>(null);
 
   // Reset the game state
   const resetGame = () => {
@@ -98,6 +101,19 @@ export default function GameBoard({ theme, onChangeTheme }: GameBoardProps) {
     }
   }, [cards, gameComplete]);
 
+  // Scroll to game complete notification when game is complete
+  useEffect(() => {
+    if (gameComplete && gameCompleteRef.current) {
+      // Add a small delay to ensure the DOM has updated
+      setTimeout(() => {
+        gameCompleteRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }, 300);
+    }
+  }, [gameComplete]);
+
   return (
     <div className="flex flex-col items-center w-full max-w-6xl mx-auto">
       <div className="mb-4 flex flex-col sm:flex-row justify-between w-full px-4">
@@ -122,7 +138,10 @@ export default function GameBoard({ theme, onChangeTheme }: GameBoardProps) {
       </div>
 
       {gameComplete && (
-        <div className="mb-4 p-4 bg-green-100 border border-green-500 rounded-md text-center w-full max-w-md">
+        <div
+          ref={gameCompleteRef}
+          className="mb-4 p-4 bg-green-100 border border-green-500 rounded-md text-center w-full max-w-md"
+        >
           <p className="text-green-700 font-bold text-xl">Game Complete!</p>
           <p className="text-green-600">
             You completed the game in {moves} moves
@@ -130,7 +149,7 @@ export default function GameBoard({ theme, onChangeTheme }: GameBoardProps) {
         </div>
       )}
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-2 sm:gap-4 w-full max-w-4xl px-2">
+      <div className="grid grid-cols-4 gap-1 sm:gap-2 md:gap-4 w-full max-w-4xl px-2">
         {cards.map((card) => (
           <Card
             key={card.id}
